@@ -56,6 +56,58 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
     });
   };
 
+// Load scores from server
+Restangular.one('score', $stateParams.id).get().then(function (data) {
+  $scope.comments = data.comments;
+}, function (response) {
+  $scope.commentsError = response;
+});
+
+
+/**
+ * Add a score.
+ */
+ $scope.comment = '';
+ $scope.addScore = function () {
+  if ($scope.comment.length === 0) {
+    return;
+  }
+  const num = Number($scope.comment);
+
+  if (!Number.isInteger(num)) {
+    return;
+  }
+
+   console.log(Number.isInteger(num));
+   Restangular.one('comment').put({
+     id: $stateParams.id,
+     content: $scope.comment
+   }).then(function (data) {
+     $scope.comment = '';
+     $scope.comments.push(data);
+   });
+ };
+
+ /**
+  * Delete a score.
+  */
+ $scope.deleteScore = function (comment) {
+   var title = $translate.instant('document.view.delete_comment_title');
+   var msg = $translate.instant('document.view.delete_comment_message');
+   var btns = [
+     {result: 'cancel', label: $translate.instant('cancel')},
+     {result: 'ok', label: $translate.instant('ok'), cssClass: 'btn-primary'}
+   ];
+   console.log("CALLING DELETE SCORE");
+   $dialog.messageBox(title, msg, btns, function (result) {
+     if (result === 'ok') {
+       Restangular.one('comment', comment.id).remove().then(function () {
+         $scope.comments.splice($scope.comments.indexOf(comment), 1);
+       });
+     }
+   });
+ };
+
   /**
    * Delete a document.
    */
