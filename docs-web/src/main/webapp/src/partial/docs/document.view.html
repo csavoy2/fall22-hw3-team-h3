@@ -139,16 +139,16 @@
         {{ 'document.view.scores' | translate }}
       </p>
 
-      <div ng-show="!score || score.length == 0" class="text-center text-muted">
+      <div ng-show="!scores || scores.length == 0" class="text-center text-muted">
         <h1 class="fas fa-comments"></h1>
         <p ng-show="!scores && !scoresError">{{ 'loading' | translate }}</p>
-        <p ng-show="scores.length == 0">{{ 'document.view.no_comments' | translate }}</p>
-        <p ng-show="!scores && scoresError">{{ 'document.view.error_loading_comments' | translate }}</p>
+        <p ng-show="scores.length == 0">{{ 'document.view.no_scores' | translate }}</p>
+        <p ng-show="!scores && scoresError">{{ 'document.view.error_loading_scores' | translate }}</p>
       </div>
 
       <div ng-repeat="score in scores" class="media" style="overflow: hidden">
         <div class="pull-left">
-          <img ng-src="https://www.gravatar.com/avatar/{{ comment.creator_gravatar }}?s=40&d=identicon" class="media-object" />
+          <img ng-src="https://www.gravatar.com/avatar/{{ score.creator_gravatar }}?s=40&d=identicon" class="media-object" />
         </div>
         <div class="media-body">
           <strong>{{ score.creator }}</strong>
