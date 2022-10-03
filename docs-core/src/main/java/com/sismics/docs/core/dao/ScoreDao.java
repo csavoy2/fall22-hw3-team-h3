@@ -92,9 +92,9 @@ public class ScoreDao {
         EntityManager em = ThreadLocalContext.get().getEntityManager();
 
         //have to check database for this step 
-        StringBuilder sb = new StringBuilder("select c.SCO_ID_C, c.SCO_CONTENT_C, c.COM_CREATEDATE_D, u.USE_USERNAME_C, u.USE_EMAIL_C from T_SCORE c, T_USER u");
-        sb.append(" where c.SCO_IDDOC_C = :documentId and c.SCO_IDUSER_C = u.USE_ID_C and c.COM_DELETEDATE_D is null ");
-        sb.append(" order by c.COM_CREATEDATE_D asc ");
+        StringBuilder sb = new StringBuilder("select c.SCO_ID_C, c.SCO_CONTENT_C, c.SCO_CREATEDATE_D, u.USE_USERNAME_C, u.USE_EMAIL_C from T_SCORE c, T_USER u");
+        sb.append(" where c.SCO_IDDOC_C = :documentId and c.SCO_IDUSER_C = u.USE_ID_C and c.SCO_DELETEDATE_D is null ");
+        sb.append(" order by c.SCO_CREATEDATE_D asc ");
         
         Query q = em.createNativeQuery(sb.toString());
         q.setParameter("documentId", documentId);

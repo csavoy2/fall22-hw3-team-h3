@@ -67,23 +67,23 @@ Restangular.one('score', $stateParams.id).get().then(function (data) {
 /**
  * Add a score.
  */
- $scope.comment = '';
+ $scope.score = '';
  $scope.addScore = function () {
-  if ($scope.comment.length === 0) {
+  if ($scope.score.length === 0) {
     return;
   }
-  const num = Number($scope.comment);
+  const num = Number($scope.score);
 
   if (!Number.isInteger(num)) {
     return;
   }
 
    console.log(Number.isInteger(num));
-   Restangular.one('comment').put({
+   Restangular.one('score').put({
      id: $stateParams.id,
-     content: $scope.comment
+     content: $scope.score
    }).then(function (data) {
-     $scope.comment = '';
+     $scope.score = '';
      $scope.comments.push(data);
    });
  };
