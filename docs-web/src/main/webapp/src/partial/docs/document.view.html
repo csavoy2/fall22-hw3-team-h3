@@ -132,19 +132,17 @@
       </div>
 
 
-
-
       <p class="page-header page-header-side">
         <span class="fas fa-star"></span>
         {{ 'document.view.scores' | translate }}
       </p>
 
-      <div ng-show="!scores || scores.length == 0" class="text-center text-muted">
-        <h1 class="fas fa-comments"></h1>
-        <p ng-show="!scores && !scoresError">{{ 'loading' | translate }}</p>
-        <p ng-show="scores.length == 0">{{ 'document.view.no_scores' | translate }}</p>
-        <p ng-show="!scores && scoresError">{{ 'document.view.error_loading_scores' | translate }}</p>
-      </div>
+        <div ng-show="!scores || scores.length == 0" class="text-center text-muted">
+          <h1 class="fas fa-comments"></h1>
+          <p ng-show="!scores && !scoresError">{{ 'loading' | translate }}</p>
+          <p ng-show="scores.length == 0">{{ 'document.view.no_scores' | translate }}</p>
+          <p ng-show="!scores && scoresError">{{ 'document.view.error_loading_scores' | translate }}</p>  
+        </div>
 
       <div ng-repeat="score in scores" class="media" style="overflow: hidden">
         <div class="pull-left">
@@ -167,13 +165,17 @@
       <form ng-submit="addScore()">
         <div class="form-group">
           <label class="sr-only" for="scoreInput">{{ 'document.view.add_score' | translate }}</label>
-          <input type="text" class="form-control" id="scoreInput" ng-model="score" ng-attr-placeholder="{{ 'document.view.add_score' | translate }}">
+            <select ng-model="score" id="score-dropdown" style="width: 100%">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit" class="form-control" id="scoreInput" ng-model="score">
         </div>
       </form>
-
-
-
-
 
       <p class="page-header page-header-side">
         <span class="fas fa-comments"></span>
