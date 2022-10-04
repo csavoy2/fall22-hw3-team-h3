@@ -13,6 +13,7 @@ import org.junit.Test;
  * 
  * @author jtremeaux
  */
+
 public class TestJpa extends BaseTransactionalTest {
     @Test
     public void testJpa() throws Exception {
