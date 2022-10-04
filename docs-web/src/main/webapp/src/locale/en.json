@@ -106,7 +106,7 @@
       "no_comments": "No comments on this document yet",
       "add_comment": "Add a comment",
       "no_scores": "No scores on this document yet",
-      "add_score": "Give a score to this document",
+      "add_score": "Give a score from 1 - 5",
       "error_loading_comments": "Error loading comments",
       "error_loading_scores": "Error loading scores",
       "workflow_current": "Current workflow step",

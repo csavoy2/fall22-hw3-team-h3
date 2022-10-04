@@ -2,9 +2,13 @@ package com.sismics.docs.core.dao.jpa;
 
 import com.sismics.docs.BaseTransactionalTest;
 import com.sismics.docs.core.dao.UserDao;
+import com.sismics.docs.core.dao.ScoreDao;
 import com.sismics.docs.core.model.jpa.User;
+import com.sismics.docs.core.model.jpa.Score;
 import com.sismics.docs.core.util.TransactionUtil;
 import com.sismics.docs.core.util.authentication.InternalAuthenticationHandler;
+
+import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,5 +40,17 @@ public class TestJpa extends BaseTransactionalTest {
 
         // Authenticate using the database
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
+        
+        // Create a score
+        //ScoreDao scoreDao = new ScoreDao();
+        Score score = new Score();
+        score.setId("123");
+        score.setContent(5);
+        score.setCreateDate(new Date());
+
+        Assert.assertEquals("123", score.getId());
+        Assert.assertEquals(Integer.valueOf(5), score.getContent());
+
+
     }
 }
